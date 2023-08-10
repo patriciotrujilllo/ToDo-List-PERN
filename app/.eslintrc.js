@@ -1,8 +1,8 @@
 module.exports = {
 	'env': {
 		'browser': true,
-		'es2021': true,
-		'cypress/globals':true
+		'es2021': true
+		// 'cypress/globals':true
 	},
 	'extends': [
 		'eslint:recommended',
@@ -11,11 +11,11 @@ module.exports = {
 	'overrides': [
 		{
 			'env': {
-				'node': true,
-				'jest':true
+				'node': true
+				// 'jest':true
 			},
 			'files': [
-				'.eslintrc.{js,cjs}',
+				'.eslintrc.{js,cjs,jsx}',
 				'**/*.spec.js',
 				'**/*.spec.jsx'
 			],
@@ -29,9 +29,9 @@ module.exports = {
 		'sourceType': 'module'
 	},
 	'plugins': [
-		'react',
-		'jest-dom',
-		'cypress'
+		'react'
+		// 'jest-dom',
+		// 'cypress'
 	],
 	'rules': {
 		'indent': [
