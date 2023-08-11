@@ -1,6 +1,9 @@
 ### Obtener todas las tareas
 GET  http://localhost:4000/todos
 
+### Obtener todas las tareas de un usuario
+GET  http://localhost:4000/todos/pato3@gmail.com
+
 ### Obtener tarea unica
 GET  http://localhost:4000/todos/d651081a-77e9-4e9b-a9ee-e11807875da0
 
@@ -10,7 +13,7 @@ Content-Type: application/json
 
 {
     "user_email": "pato3@gmail.com",
-    "title": "crea Api",
+    "title": "Para probar la busqueda por usuario",
     "progress": 5
 }
 ### actualizar todos los parametros de una tarea
@@ -23,11 +26,11 @@ Content-Type: application/json
     "progress": 9
 }
 ### actualizar datos parciales de una tarea
-PATCH  http://localhost:4000/todos/619e3be3-744b-447a-bbfd-586b00c5ad59
+PATCH  http://localhost:4000/todos/788f3e81-25e1-4372-8aae-92ec9a64a72b
 Content-Type: application/json
 
 {
-    "title": "Probando patch"
+    "title": "Probando sort de fechas 2"
 }
 ### Elimina una tarea
 DELETE  http://localhost:4000/todos/d651081a-77e9-4e9b-a9ee-e11807875da0
