@@ -1,5 +1,5 @@
 import express from 'express'
-import { todosRouter } from './Controller/todo.controller.js'
+import { todosRouter } from './middleware/todo.controller.js'
 import {config} from 'dotenv'
 config()
 
