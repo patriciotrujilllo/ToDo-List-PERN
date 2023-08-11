@@ -1,3 +1,4 @@
+import { Modal } from './Modal'
 import {NoteIcon} from './Icons'
 
 export const Header = ({listname}) =>{
@@ -15,6 +16,7 @@ export const Header = ({listname}) =>{
 				<button className="create" onClick={create}>ADD NEW</button>
 				<button className="signout" onClick={signout}>SIGN OUT</button>
 			</div>
+			<Modal />
 		</header>
 	)
 }
