@@ -8,16 +8,23 @@ import  util  from 'util'
 export const todosRouter = Router()
 
 todosRouter.use((req,res,next)=>{
-	res.append('Access-Control-Allow-Origin',['http://localhost:8080'])
+	res.append('Access-Control-Allow-Origin',['http://localhost:3000'])
 	res.append('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE')
 	res.append('Access-Control-Allow-Headers', 'Content-Type')
 	next()
 })
 
-
 todosRouter.get('/',async (req,res)=>{
-
+	
 	const todos = await pool.query('SELECT * FROM todos')
+	res.json(todos.rows)
+})
+
+todosRouter.get('/:user_email',async (req,res)=>{
+	const {user_email} = req.params
+	console.log(user_email)
+
+	const todos = await pool.query('SELECT * FROM todos WHERE user_email=$1',[user_email])
 	res.json(todos.rows)
 })
 
