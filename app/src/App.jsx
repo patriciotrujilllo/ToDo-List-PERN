@@ -21,9 +21,9 @@ function App() {
 
 	return(
 		<main className='app'>
-			<Header listname={'To Do List'}/>
+			<Header listname={'To Do List'} setTasks={setTasks} tasks={tasks}/>
 			{
-				tasks?<ListItem tasks={tasks}/>:<span>...loading</span>
+				tasks?<ListItem setTasks={setTasks} tasks={tasks}/>:<span>...loading</span>
 			}
 			
 		</main>
