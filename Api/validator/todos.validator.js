@@ -9,7 +9,7 @@ const todoShema = z.object({
 		invalid_type_error: 'todo title must be a string',
 		required_error: 'todo title is required'
 	}),
-	progress: z.number().int().min(0).max(10).default(5)
+	progress: z.number().int().min(0).max(100).default(0)
 })
 
 export const validate = (object) =>{
