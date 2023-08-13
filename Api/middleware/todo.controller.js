@@ -45,19 +45,25 @@ todosRouter.post('/',async(req,res)=>{
 
 
 	if (result.error){
-		res.status(400).json({error: JSON.parse(result.error.message)})
+		return res.status(400).json({error: JSON.parse(result.error.message)})
 	}
 	const newtodo = {
 		id: crypto.randomUUID(),
 		date: date.toString(),
 		...result.data
 	}
-	pool.query('INSERT INTO todos (id,user_email,title,progress,date) VALUES ($1,$2,$3,$4,$5)',[newtodo.id,newtodo.user_email, newtodo.title,newtodo.progress,newtodo.date])
-		.then(()=>{
-			res.status(201).json(newtodo)
-		}).catch(err=>{
-			res.status(400).json({ error: 'Error al insertar la película en la base de datos', details: err.message })
-		})
+	try{
+		pool.query('INSERT INTO todos (id,user_email,title,progress,date) VALUES ($1,$2,$3,$4,$5)',[newtodo.id,newtodo.user_email, newtodo.title,newtodo.progress,newtodo.date])
+		return res.status(200).json(newtodo)
+	}catch (err){
+		return res.status(400).json({error: 'error al insertar tarea en la BD', details: err.message})
+	}
+	
+		// .then(()=>{
+		// 	return res.status(201).json(newtodo)
+		// }).catch(err=>{
+		// 	return res.status(400).json({ error: 'Error al insertar la película en la base de datos', details: err.message })
+		// })
     
 })
 
