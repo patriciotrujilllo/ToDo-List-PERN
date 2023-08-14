@@ -144,13 +144,14 @@ todosRouter.patch('/:id',async(req,res)=>{
 		})
 })
 
-todosRouter.delete('/:id',(req,res)=>{
+todosRouter.delete('/:id',async(req,res)=>{
 
 	const {id} = req.params
-	pool.query('DELETE FROM todos WHERE id=$1',[id])
-		.then(()=>{
-			res.status(204)
-		}).catch(()=>{
-			res.status(404)
-		})
+	try{
+		const del = await pool.query('DELETE FROM todos WHERE id=$1',[id])
+		return res.status(200).json(del)
+	}catch{
+		return res.status(400)
+	}
+	
 })
