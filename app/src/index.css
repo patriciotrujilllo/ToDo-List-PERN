@@ -167,3 +167,46 @@ body{
 .modal input[type="range"]{
     padding: 15px 0;
 }
+
+/*Auth*/
+.auth-container{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+.auth-container-box{
+    width: 500px;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    box-shadow: rgba(0,0,0, 0.08) 0 10px 20px 0;
+    overflow: hidden;
+}
+.button-auth-container button{
+    width: 50%;
+    border: none;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.submit{
+    padding:14px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.input-container input{
+    padding: 14px;
+    border-radius: 5px;
+}
+.button-auth-container .loginactive{
+    background-color: rgba(202, 195, 195, 0.705);
+}
+.button-auth-container .logindeactivated{
+    background-color: rgb(255,255,255);
+}
