@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Header } from './components/Header'
 import { ListItem } from './components/ListItem'
+import {Auth} from './components/Auth'
 
 function App() {
 	const [tasks,setTasks] = useState([])
+	const authToken = false
 
 	const Data = async() =>{
 		try{
@@ -16,16 +18,21 @@ function App() {
 	}
 
 	useEffect(()=>{
-		Data()
+		if(authToken){
+			Data()
+		} 
 	},[])
 
 	return(
 		<main className='app'>
-			<Header listname={'To Do List'} setTasks={setTasks} tasks={tasks}/>
-			{
-				tasks?<ListItem setTasks={setTasks} tasks={tasks}/>:<span>...loading</span>
-			}
+			{authToken?
+				<>
+					<Header listname={'To Do List'} setTasks={setTasks} tasks={tasks}/>
 			
+					{tasks?<ListItem setTasks={setTasks} tasks={tasks}/>:<span>...loading</span>}
+				</>
+				:<Auth />
+			}
 		</main>
 	)
 
