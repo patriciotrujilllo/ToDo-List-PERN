@@ -19,3 +19,10 @@ export const editTodo = (data,id) =>{
 		body: JSON.stringify(data)
 	}).then(res=>res.json())
 }
+
+export const deleteTodo = (id) =>{
+	return fetch(`${url}/${id}`,{
+		method:'DELETE',
+		headers:{'Content-Type':'application/json'}
+	}).then(res=>res.json()).catch(err=>console.error(err))
+}
