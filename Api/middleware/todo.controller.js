@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {validate, validatePartial } from '../validator/todos.validator.js'
 import { pool } from '../db.js'
+import { useToken } from '../utils/useToken.js'
 import crypto from 'crypto'
 import  util  from 'util'
 
@@ -10,38 +11,28 @@ export const todosRouter = Router()
 todosRouter.use((req,res,next)=>{
 	res.append('Access-Control-Allow-Origin',['http://localhost:3000'])
 	res.append('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE')
-	res.append('Access-Control-Allow-Headers', 'Content-Type')
+	res.append('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 	next()
 })
 
-// todosRouter.get('/',async (req,res)=>{
-// 	try {
-// 		const todos = await pool.query('SELECT * FROM todos')
-// 		res.json(todos.rows)
-// 	} catch (error) {
-// 		res.status(404).json(error)
-// 	}
-	
-// })
 
-todosRouter.get('/:user_email',async (req,res)=>{
-	const {user_email} = req.params
+todosRouter.get('/:user_email',useToken,async (req,res)=>{
+	const {email} = req
 
-	const todos = await pool.query('SELECT * FROM todos WHERE user_email=$1',[user_email])
+	const todos = await pool.query('SELECT * FROM todos WHERE user_email=$1',[email])
 	res.json(todos.rows)
 })
 
-todosRouter.get('/:id',async (req,res)=>{
+todosRouter.get('/:id',useToken,async (req,res)=>{
 
 	const {id} = req.params
 	const todo = await pool.query('SELECT * FROM todos WHERE id= $1',[id])
-	// const todo = todos.find(todo=>todo.id===id)
 	if (todo) return res.json(todo.rows[0])
 
 	res.status(404).json({message: 'todo not found'})
 })
 
-todosRouter.post('/',async(req,res)=>{
+todosRouter.post('/',useToken,async(req,res)=>{
 
 	const result = validate(req.body)
 	const date = new Date()
@@ -70,7 +61,7 @@ todosRouter.post('/',async(req,res)=>{
     
 })
 
-todosRouter.put('/:id',async(req,res) =>{
+todosRouter.put('/:id',useToken,async(req,res) =>{
 	const {id} = req.params
 	const result = validate(req.body)
 
@@ -103,7 +94,7 @@ todosRouter.put('/:id',async(req,res) =>{
 
 })
 
-todosRouter.patch('/:id',async(req,res)=>{
+todosRouter.patch('/:id',useToken,async(req,res)=>{
     
 	const {id} = req.params
 	const result = validatePartial(req.body)
@@ -147,7 +138,7 @@ todosRouter.patch('/:id',async(req,res)=>{
 		})
 })
 
-todosRouter.delete('/:id',async(req,res)=>{
+todosRouter.delete('/:id',useToken,async(req,res)=>{
 
 	const {id} = req.params
 	try{
