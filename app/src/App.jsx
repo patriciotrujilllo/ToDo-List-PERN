@@ -3,6 +3,7 @@ import { Header } from './components/Header'
 import { ListItem } from './components/ListItem'
 import {Auth} from './components/Auth'
 import { useCookies } from 'react-cookie'
+import { getTodo,setToken } from './services/todo.services'
 
 function App() {
 	const [tasks,setTasks] = useState([])
@@ -12,16 +13,15 @@ function App() {
 
 	const email = cookies && cookies.user && cookies.user.email ? cookies.user.email : null
 
-
 	const Data = async() =>{
 		setLoading(true)
 		try{
 			// eslint-disable-next-line no-undef
-			const response = await fetch(`${process.env.REACT_APP_URL}/todos/${email}`)
-			const json = await response.json()
-			setTasks(json)
+			setToken(authToken)
+			const response = await getTodo(email)
+			setTasks(response)
 		}catch (err){
-			console.error(err)
+			console.error(err,'en el app')
 		}finally{
 			setLoading(false)
 		}
