@@ -1,5 +1,6 @@
 import express from 'express'
 import { todosRouter } from './middleware/todo.controller.js'
+import { usersRouter } from './middleware/user.router.js'
 import {config} from 'dotenv'
 config()
 
@@ -8,6 +9,7 @@ const app = express()
 app.use(express.json())
 
 app.use('/todos',todosRouter)
+app.use('/users',usersRouter)
 
 const PORT = process.env.PORTAPI || '4000'
 
