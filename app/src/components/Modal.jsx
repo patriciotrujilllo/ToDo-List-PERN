@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { createTodo,editTodo } from '../services/todo.services.js'
+import { useCookies } from 'react-cookie'
 
 export const Modal = ({mode,setShowModal,setTasks,tasks,task}) =>{
-
+	const [cookies] = useCookies(null)
 	const [data,setData] = useState({
-		user_email: mode==='edit' ? task.user_email: 'pato3@gmail.com',
+		user_email: mode==='edit' ? task.user_email: cookies.user.email,
 		title: mode==='edit' ? task.title: '',
 		progress: mode==='edit' ? task.progress: 0
 	})
