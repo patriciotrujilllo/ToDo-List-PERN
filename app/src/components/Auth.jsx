@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createUser } from '../services/users.services.js'
+import { loginUser } from '../services/login.service.js'
 import {useCookies} from 'react-cookie'
 
 export const Auth = () =>{
@@ -38,14 +39,26 @@ export const Auth = () =>{
 
 	const handleSubmit = async(e) =>{
 		e.preventDefault()
-		try {
-			const user = await createUser(data)
-			setCookie('user',user)
-			console.log(cookies)
-		}catch (err) {
-			console.error(err.message)
-			setMessageError(err.message)
+		if(login){
+			try {
+				const user = await loginUser(data)
+				setCookie('user',user)
+				console.log(cookies)
+			} catch (err) {
+				console.error(err.message)
+				setMessageError(err.message)
+			}
+		}else{
+			try {
+				const user = await createUser(data)
+				setCookie('user',user)
+				console.log(cookies)
+			}catch (err) {
+				console.error(err.message)
+				setMessageError(err.message)
+			}
 		}
+		
 	}
 	return(
 		<div className="auth-container">
