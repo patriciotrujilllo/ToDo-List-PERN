@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import crypto from 'crypto'
 import {validate, validatePartial } from '../validator/todos.validator.js'
 import { pool } from '../db.js'
+import crypto from 'crypto'
 import  util  from 'util'
 
 
@@ -14,15 +14,18 @@ todosRouter.use((req,res,next)=>{
 	next()
 })
 
-todosRouter.get('/',async (req,res)=>{
+// todosRouter.get('/',async (req,res)=>{
+// 	try {
+// 		const todos = await pool.query('SELECT * FROM todos')
+// 		res.json(todos.rows)
+// 	} catch (error) {
+// 		res.status(404).json(error)
+// 	}
 	
-	const todos = await pool.query('SELECT * FROM todos')
-	res.json(todos.rows)
-})
+// })
 
 todosRouter.get('/:user_email',async (req,res)=>{
 	const {user_email} = req.params
-	console.log(user_email)
 
 	const todos = await pool.query('SELECT * FROM todos WHERE user_email=$1',[user_email])
 	res.json(todos.rows)
