@@ -1,6 +1,5 @@
 export const loginUser = (data) =>{
-	// eslint-disable-next-line no-undef
-	return fetch('http://localhost:4000/login',{
+	return fetch(`${process.env.REACT_APP_URL}/login`,{
 		method:'POST',
 		headers:{'Content-Type':'application/json'},
 		body: JSON.stringify(data)

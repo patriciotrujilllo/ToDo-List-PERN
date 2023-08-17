@@ -1,7 +1,6 @@
-const url ='http://localhost:4000/users'
-
 export const createUser = (data) =>{
-	return fetch(url,{
+	
+	return fetch(`${process.env.REACT_APP_URL}/users`,{
 		method:'POST',
 		headers: {'Content-Type':'application/json'},
 		body: JSON.stringify(data)
