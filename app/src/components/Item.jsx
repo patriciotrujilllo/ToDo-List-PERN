@@ -17,8 +17,6 @@ export const Item = ({task,setTasks,tasks}) =>{
 		}catch(err) {
 			console.error(err)
 		}
-		
-		
 	}
 	return(
 		<li className="item">
