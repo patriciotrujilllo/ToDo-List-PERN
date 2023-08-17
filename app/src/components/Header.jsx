@@ -7,7 +7,6 @@ export const Header = ({listname,setTasks,tasks}) =>{
 	const [showModal,setShowModal] = useState(false)
 	const [,,removeCookie] = useCookies(null)
 	const signout = () =>{
-		console.log('signout')
 		removeCookie('user')
 	}
 	return(
