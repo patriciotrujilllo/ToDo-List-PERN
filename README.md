@@ -46,7 +46,7 @@ Para instalar este proyecto en tu equipo local, sigue estos pasos:
         - Secret
     - La varible de entorno de la app es:
         - REACT_APP_URL
-4. Crea una base de datos en POSGRES donde se tenga usuarios y notas, donde una nota solo puede tener un usuario pero un usuario puede tener varias notas (relación n:1)
+4. Crea una base de datos en POSGRES donde se tenga usuarios y notas(esta configuracion ya esta en el archivo DB.sql de la raiz del proyecto), donde una nota solo puede tener un usuario pero un usuario puede tener varias notas (relación n:1)
 5. Ejecuta `npm run api` para iniciar el servidor y luego se procede a iniciar la aplicacion con `npm run app`.
     
 ## Uso 
