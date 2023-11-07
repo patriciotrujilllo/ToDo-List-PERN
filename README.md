@@ -44,9 +44,10 @@ Para instalar este proyecto en tu equipo local, sigue estos pasos:
         - port
         - database
         - Secret
-    - Las varible de entorno de la app es:
+    - La varible de entorno de la app es:
         - REACT_APP_URL
-5. Ejecuta `npm start` para iniciar el servidor.
+4. Crea una base de datos en POSGRES donde se tenga usuarios y notas, donde una nota solo puede tener un usuario pero un usuario puede tener varias notas (relación n:1)
+5. Ejecuta `npm run api` para iniciar el servidor y luego se procede a iniciar la aplicacion con `npm run app`.
     
 ## Uso 
 
