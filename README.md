@@ -4,6 +4,8 @@ Este es un proyecto CRUD (Crear, Leer, Actualizar, Eliminar) de notas, donde las
 
 ![Login/register page](./images/Page.png)
 
+![Login/register page](./images/notas.png)
+
 ## Tecnologías utilizadas
 
 Este proyecto fue creado con el stack PERN (PostgreSQL, Express, React y Node.js). Las dependencias de producción del backend incluyen bcrypt, dotenv, express, jsonwebtoken, pg y zod. En el frontend, el proyecto fue creado con `npx create-app-[nombre]` y las dependencias de producción incluyen react-cookie.
