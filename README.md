@@ -34,9 +34,19 @@ Antes de instalar y utilizar este proyecto, asegúrate de tener instalado Postgr
 
 Para instalar este proyecto en tu equipo local, sigue estos pasos:
 1. Clona este repositorio en tu equipo local.
-2. Navega hasta el directorio del proyecto y ejecuta `npm install` para instalar todas las dependencias.
-3. Crea un archivo `.env` en el directorio raíz del proyecto y agrega tus variables de entorno (por ejemplo, la cadena de conexión a la base de datos).
-4. Ejecuta `npm start` para iniciar el servidor.
+2. Navega hasta el directorio del proyecto y ejecuta `npm install` para instalar todas las dependencias, esto debe realizarse tanto en la carpeta de app y Api.
+3. Crea un archivo `.env` en el directorio de la Api y app del proyecto y agrega tus variables de entorno.
+    - Las variables de entorno de la Api son:
+        - PORTAPI
+        - user
+        - password
+        - host
+        - port
+        - database
+        - Secret
+    - Las varible de entorno de la app es:
+        - REACT_APP_URL
+5. Ejecuta `npm start` para iniciar el servidor.
     
 ## Uso 
 
