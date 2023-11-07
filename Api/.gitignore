@@ -2,3 +2,5 @@ node_modules
 Request
 data.sql
 .env
+.gitignore
+.eslintrc.js
